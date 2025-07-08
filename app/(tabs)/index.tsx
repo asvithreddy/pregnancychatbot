@@ -136,17 +136,25 @@ export default function ChatbotWidget() {
         <View style={styles.chatContainer}>
           <View style={{ marginBottom: 8 }}>
             <Text style={{ fontWeight: 'bold' }}>Language:</Text>
-            <Picker
-              selectedValue={language}
-              onValueChange={(val) => setLanguage(val)}
-              style={{ height: 40, width: 180 }}
-            >
-              <Picker.Item label="English" value="en" />
-              <Picker.Item label="हिंदी" value="hi" />
-              <Picker.Item label="తెలుగు" value="te" />
-              <Picker.Item label="தமிழ்" value="ta" />
-              <Picker.Item label="ಕನ್ನಡ" value="kn" />
-            </Picker>
+            <View style={styles.pickerContainer}>
+  <Picker
+    selectedValue={language}
+    onValueChange={(val) => setLanguage(val)}
+    style={styles.picker}
+    itemStyle={styles.pickerItem}
+    dropdownIconColor="#000"
+    mode="dropdown"
+  >
+    <Picker.Item label="English" value="en" />
+    <Picker.Item label="हिंदी (Hindi)" value="hi" />
+    <Picker.Item label="తెలుగు (Telugu)" value="te" />
+    <Picker.Item label="தமிழ் (Tamil)" value="ta" />
+    <Picker.Item label="ಕನ್ನಡ (Kannada)" value="kn" />
+  </Picker>
+</View>
+
+
+
           </View>
 
           <ScrollView style={styles.chatBox}>
@@ -232,7 +240,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: '70%',
+    height: '90%',
     backgroundColor: 'white',
     borderTopLeftRadius: 16,
     borderTopRightRadius: 16,
@@ -304,5 +312,26 @@ const styles = StyleSheet.create({
   },
   doctorItem: {
     paddingVertical: 4
+  },
+  pickerContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingHorizontal: 12,
+    width: '50%',           // or set fixed like 250 or 300
+    maxWidth: 180,           // prevent overflow
+    marginBottom: 4,
+  },
+  
+  picker: {
+    color: '#000',
+    height: 60,
+    width: '100%',
+  },
+  
+  pickerItem: {
+    fontSize: 12,
   }
+
 });
